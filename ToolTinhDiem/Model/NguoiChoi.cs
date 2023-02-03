@@ -11,6 +11,8 @@ namespace ToolTinhDiem.Model
 	{
 		[DisplayName("Tên")]
 		public string Ten { get; set; }
+		[DisplayName("Tổng số trận")]
+		public int TongSoTran { get => TranThang + TranHoa + TranThua; }
 		[DisplayName("Trận thắng")]
 		public int TranThang { get; set; } = 0;
 		[DisplayName("Trận hòa")]

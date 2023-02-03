@@ -33,104 +33,137 @@
 			this.label2 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
-			this.textBox1 = new System.Windows.Forms.TextBox();
-			this.textBox2 = new System.Windows.Forms.TextBox();
+			this.txtScore1 = new System.Windows.Forms.TextBox();
+			this.txtScore2 = new System.Windows.Forms.TextBox();
 			this.cbPlayer1 = new System.Windows.Forms.ComboBox();
 			this.cbPlayer2 = new System.Windows.Forms.ComboBox();
+			this.btnUpdateScore = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// dataGridView1
 			// 
+			this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+			this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
 			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridView1.Location = new System.Drawing.Point(3, 93);
+			this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.dataGridView1.Location = new System.Drawing.Point(0, 130);
+			this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
 			this.dataGridView1.Name = "dataGridView1";
 			this.dataGridView1.ReadOnly = true;
-			this.dataGridView1.Size = new System.Drawing.Size(836, 158);
+			this.dataGridView1.RowHeadersVisible = false;
+			this.dataGridView1.RowHeadersWidth = 51;
+			this.dataGridView1.Size = new System.Drawing.Size(1104, 156);
 			this.dataGridView1.TabIndex = 0;
 			// 
 			// label1
 			// 
 			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(0, 9);
+			this.label1.Location = new System.Drawing.Point(0, 11);
+			this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(67, 13);
+			this.label1.Size = new System.Drawing.Size(81, 16);
 			this.label1.TabIndex = 1;
 			this.label1.Text = "Người chơi 1";
 			// 
 			// label2
 			// 
 			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(246, 9);
+			this.label2.Location = new System.Drawing.Point(328, 11);
+			this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(67, 13);
+			this.label2.Size = new System.Drawing.Size(81, 16);
 			this.label2.TabIndex = 2;
 			this.label2.Text = "Người chơi 2";
 			// 
 			// label3
 			// 
 			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(146, 9);
+			this.label3.Location = new System.Drawing.Point(195, 11);
+			this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(30, 13);
+			this.label3.Size = new System.Drawing.Size(37, 16);
 			this.label3.TabIndex = 3;
 			this.label3.Text = "Tỉ số";
 			// 
 			// label4
 			// 
 			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(156, 40);
+			this.label4.Location = new System.Drawing.Point(208, 49);
+			this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(10, 13);
+			this.label4.Size = new System.Drawing.Size(11, 16);
 			this.label4.TabIndex = 6;
 			this.label4.Text = "-";
 			// 
-			// textBox1
+			// txtScore1
 			// 
-			this.textBox1.Location = new System.Drawing.Point(110, 37);
-			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(40, 20);
-			this.textBox1.TabIndex = 7;
+			this.txtScore1.Location = new System.Drawing.Point(147, 46);
+			this.txtScore1.Margin = new System.Windows.Forms.Padding(4);
+			this.txtScore1.Name = "txtScore1";
+			this.txtScore1.Size = new System.Drawing.Size(52, 22);
+			this.txtScore1.TabIndex = 7;
+			this.txtScore1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			// 
-			// textBox2
+			// txtScore2
 			// 
-			this.textBox2.Location = new System.Drawing.Point(172, 37);
-			this.textBox2.Name = "textBox2";
-			this.textBox2.Size = new System.Drawing.Size(39, 20);
-			this.textBox2.TabIndex = 8;
+			this.txtScore2.Location = new System.Drawing.Point(229, 46);
+			this.txtScore2.Margin = new System.Windows.Forms.Padding(4);
+			this.txtScore2.Name = "txtScore2";
+			this.txtScore2.Size = new System.Drawing.Size(51, 22);
+			this.txtScore2.TabIndex = 8;
+			this.txtScore2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			// 
 			// cbPlayer1
 			// 
 			this.cbPlayer1.FormattingEnabled = true;
-			this.cbPlayer1.Location = new System.Drawing.Point(3, 36);
+			this.cbPlayer1.Location = new System.Drawing.Point(4, 44);
+			this.cbPlayer1.Margin = new System.Windows.Forms.Padding(4);
 			this.cbPlayer1.Name = "cbPlayer1";
-			this.cbPlayer1.Size = new System.Drawing.Size(92, 21);
+			this.cbPlayer1.Size = new System.Drawing.Size(121, 24);
 			this.cbPlayer1.TabIndex = 9;
 			this.cbPlayer1.SelectedIndexChanged += new System.EventHandler(this.cbPlayer1_SelectedIndexChanged);
 			// 
 			// cbPlayer2
 			// 
 			this.cbPlayer2.FormattingEnabled = true;
-			this.cbPlayer2.Location = new System.Drawing.Point(225, 36);
+			this.cbPlayer2.Location = new System.Drawing.Point(300, 44);
+			this.cbPlayer2.Margin = new System.Windows.Forms.Padding(4);
 			this.cbPlayer2.Name = "cbPlayer2";
-			this.cbPlayer2.Size = new System.Drawing.Size(88, 21);
+			this.cbPlayer2.Size = new System.Drawing.Size(116, 24);
 			this.cbPlayer2.TabIndex = 10;
+			this.cbPlayer2.SelectedIndexChanged += new System.EventHandler(this.cbPlayer2_SelectedIndexChanged);
+			// 
+			// btnUpdateScore
+			// 
+			this.btnUpdateScore.Location = new System.Drawing.Point(147, 84);
+			this.btnUpdateScore.Name = "btnUpdateScore";
+			this.btnUpdateScore.Size = new System.Drawing.Size(133, 23);
+			this.btnUpdateScore.TabIndex = 11;
+			this.btnUpdateScore.Text = "Cập nhật kết quả";
+			this.btnUpdateScore.UseVisualStyleBackColor = true;
+			this.btnUpdateScore.Click += new System.EventHandler(this.btnUpdateScore_Click);
 			// 
 			// Form1
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(828, 263);
+			this.ClientSize = new System.Drawing.Size(1104, 286);
+			this.Controls.Add(this.btnUpdateScore);
 			this.Controls.Add(this.cbPlayer2);
 			this.Controls.Add(this.cbPlayer1);
-			this.Controls.Add(this.textBox2);
-			this.Controls.Add(this.textBox1);
+			this.Controls.Add(this.txtScore2);
+			this.Controls.Add(this.txtScore1);
 			this.Controls.Add(this.label4);
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.dataGridView1);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+			this.Margin = new System.Windows.Forms.Padding(4);
+			this.MaximizeBox = false;
 			this.Name = "Form1";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Form1";
 			this.Load += new System.EventHandler(this.Form1_Load);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -146,10 +179,11 @@
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Label label4;
-		private System.Windows.Forms.TextBox textBox1;
-		private System.Windows.Forms.TextBox textBox2;
+		private System.Windows.Forms.TextBox txtScore1;
+		private System.Windows.Forms.TextBox txtScore2;
 		private System.Windows.Forms.ComboBox cbPlayer1;
 		private System.Windows.Forms.ComboBox cbPlayer2;
+		private System.Windows.Forms.Button btnUpdateScore;
 	}
 }
 
