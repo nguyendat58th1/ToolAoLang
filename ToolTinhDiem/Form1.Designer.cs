@@ -32,11 +32,11 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
-			this.txtPlayer1 = new System.Windows.Forms.TextBox();
-			this.txtPlayer2 = new System.Windows.Forms.TextBox();
 			this.label4 = new System.Windows.Forms.Label();
 			this.textBox1 = new System.Windows.Forms.TextBox();
 			this.textBox2 = new System.Windows.Forms.TextBox();
+			this.cbPlayer1 = new System.Windows.Forms.ComboBox();
+			this.cbPlayer2 = new System.Windows.Forms.ComboBox();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -61,7 +61,7 @@
 			// label2
 			// 
 			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(222, 9);
+			this.label2.Location = new System.Drawing.Point(246, 9);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(67, 13);
 			this.label2.TabIndex = 2;
@@ -75,20 +75,6 @@
 			this.label3.Size = new System.Drawing.Size(30, 13);
 			this.label3.TabIndex = 3;
 			this.label3.Text = "Tỉ số";
-			// 
-			// txtPlayer1
-			// 
-			this.txtPlayer1.Location = new System.Drawing.Point(3, 37);
-			this.txtPlayer1.Name = "txtPlayer1";
-			this.txtPlayer1.Size = new System.Drawing.Size(100, 20);
-			this.txtPlayer1.TabIndex = 4;
-			// 
-			// txtPlayer2
-			// 
-			this.txtPlayer2.Location = new System.Drawing.Point(225, 37);
-			this.txtPlayer2.Name = "txtPlayer2";
-			this.txtPlayer2.Size = new System.Drawing.Size(100, 20);
-			this.txtPlayer2.TabIndex = 5;
 			// 
 			// label4
 			// 
@@ -113,22 +99,40 @@
 			this.textBox2.Size = new System.Drawing.Size(39, 20);
 			this.textBox2.TabIndex = 8;
 			// 
+			// cbPlayer1
+			// 
+			this.cbPlayer1.FormattingEnabled = true;
+			this.cbPlayer1.Location = new System.Drawing.Point(3, 36);
+			this.cbPlayer1.Name = "cbPlayer1";
+			this.cbPlayer1.Size = new System.Drawing.Size(92, 21);
+			this.cbPlayer1.TabIndex = 9;
+			this.cbPlayer1.SelectedIndexChanged += new System.EventHandler(this.cbPlayer1_SelectedIndexChanged);
+			// 
+			// cbPlayer2
+			// 
+			this.cbPlayer2.FormattingEnabled = true;
+			this.cbPlayer2.Location = new System.Drawing.Point(225, 36);
+			this.cbPlayer2.Name = "cbPlayer2";
+			this.cbPlayer2.Size = new System.Drawing.Size(88, 21);
+			this.cbPlayer2.TabIndex = 10;
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(828, 263);
+			this.Controls.Add(this.cbPlayer2);
+			this.Controls.Add(this.cbPlayer1);
 			this.Controls.Add(this.textBox2);
 			this.Controls.Add(this.textBox1);
 			this.Controls.Add(this.label4);
-			this.Controls.Add(this.txtPlayer2);
-			this.Controls.Add(this.txtPlayer1);
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.dataGridView1);
 			this.Name = "Form1";
 			this.Text = "Form1";
+			this.Load += new System.EventHandler(this.Form1_Load);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
@@ -141,11 +145,11 @@
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.TextBox txtPlayer1;
-		private System.Windows.Forms.TextBox txtPlayer2;
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.TextBox textBox1;
 		private System.Windows.Forms.TextBox textBox2;
+		private System.Windows.Forms.ComboBox cbPlayer1;
+		private System.Windows.Forms.ComboBox cbPlayer2;
 	}
 }
 
