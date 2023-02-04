@@ -38,6 +38,8 @@
 			this.cbPlayer1 = new System.Windows.Forms.ComboBox();
 			this.cbPlayer2 = new System.Windows.Forms.ComboBox();
 			this.btnUpdateScore = new System.Windows.Forms.Button();
+			this.btnImportData = new System.Windows.Forms.Button();
+			this.btnDeleteAllFile = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -136,7 +138,7 @@
 			// 
 			// btnUpdateScore
 			// 
-			this.btnUpdateScore.Location = new System.Drawing.Point(147, 84);
+			this.btnUpdateScore.Location = new System.Drawing.Point(3, 83);
 			this.btnUpdateScore.Name = "btnUpdateScore";
 			this.btnUpdateScore.Size = new System.Drawing.Size(133, 23);
 			this.btnUpdateScore.TabIndex = 11;
@@ -144,11 +146,33 @@
 			this.btnUpdateScore.UseVisualStyleBackColor = true;
 			this.btnUpdateScore.Click += new System.EventHandler(this.btnUpdateScore_Click);
 			// 
+			// btnImportData
+			// 
+			this.btnImportData.Location = new System.Drawing.Point(300, 83);
+			this.btnImportData.Name = "btnImportData";
+			this.btnImportData.Size = new System.Drawing.Size(116, 23);
+			this.btnImportData.TabIndex = 12;
+			this.btnImportData.Text = "Import dữ liệu";
+			this.btnImportData.UseVisualStyleBackColor = true;
+			this.btnImportData.Click += new System.EventHandler(this.btnImportData_Click);
+			// 
+			// btnDeleteAllFile
+			// 
+			this.btnDeleteAllFile.Location = new System.Drawing.Point(147, 83);
+			this.btnDeleteAllFile.Name = "btnDeleteAllFile";
+			this.btnDeleteAllFile.Size = new System.Drawing.Size(133, 23);
+			this.btnDeleteAllFile.TabIndex = 13;
+			this.btnDeleteAllFile.Text = "Xóa tất cả file backup";
+			this.btnDeleteAllFile.UseVisualStyleBackColor = true;
+			this.btnDeleteAllFile.Click += new System.EventHandler(this.btnDeleteAllFile_Click);
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1104, 286);
+			this.Controls.Add(this.btnDeleteAllFile);
+			this.Controls.Add(this.btnImportData);
 			this.Controls.Add(this.btnUpdateScore);
 			this.Controls.Add(this.cbPlayer2);
 			this.Controls.Add(this.cbPlayer1);
@@ -184,6 +208,8 @@
 		private System.Windows.Forms.ComboBox cbPlayer1;
 		private System.Windows.Forms.ComboBox cbPlayer2;
 		private System.Windows.Forms.Button btnUpdateScore;
+		private System.Windows.Forms.Button btnImportData;
+		private System.Windows.Forms.Button btnDeleteAllFile;
 	}
 }
 
