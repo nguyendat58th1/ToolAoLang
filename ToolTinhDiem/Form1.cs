@@ -19,6 +19,7 @@ namespace ToolTinhDiem
 	public partial class Form1 : Form
 	{
 		private List<NguoiChoi> listNguoiChoi;
+		private List<TranDau> listTranDau = new List<TranDau>();
 		private NguoiChoi _player1;
 		private NguoiChoi _player2;
 		public Form1()
@@ -52,6 +53,13 @@ namespace ToolTinhDiem
 			cbPlayer1.DataSource = listNguoiChoi.Select(x => x.Ten).ToList();
 			cbPlayer2.DataSource = listNguoiChoi.Select(x => x.Ten).ToList();
 			cbPlayer2.SelectedItem = listNguoiChoi.Select(x => x.Ten).Skip(1).Take(1).First();
+
+			DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
+			btn.HeaderText = "Lịch sử trận";
+			btn.Text = "History";
+			btn.Name = "btnHistory";
+			btn.UseColumnTextForButtonValue = true;
+			dataGridView1.Columns.Add(btn);
 		}
 
 		private void btnUpdateScore_Click(object sender, EventArgs e)
@@ -75,20 +83,23 @@ namespace ToolTinhDiem
 				MessageBox.Show("Tỉ số không hợp lệ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return;
 			}
+
+
+			var leftPlayer = listNguoiChoi.FirstOrDefault(x => x.Ten == cbPlayer1.SelectedItem.ToString());
+			if (leftPlayer == null)
+			{
+				MessageBox.Show("Không tìm thấy người chơi", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return;
+			}
+			var rightPlayer = listNguoiChoi.FirstOrDefault(x => x.Ten == cbPlayer2.SelectedItem.ToString());
+			if (rightPlayer == null)
+			{
+				MessageBox.Show("Không tìm thấy người chơi", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return;
+			}
 			if (score1 > score2)
 			{
-				var leftPlayer = listNguoiChoi.FirstOrDefault(x => x.Ten == cbPlayer1.SelectedItem.ToString());
-				if (leftPlayer == null)
-				{
-					MessageBox.Show("Không tìm thấy người chơi", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-					return;
-				}
-				var rightPlayer = listNguoiChoi.FirstOrDefault(x => x.Ten == cbPlayer2.SelectedItem.ToString());
-				if (rightPlayer == null)
-				{
-					MessageBox.Show("Không tìm thấy người chơi", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-					return;
-				}
+		
 				leftPlayer.TranThang += 1;
 				leftPlayer.BanThang += score1;
 				leftPlayer.BangBai += score2;
@@ -100,18 +111,6 @@ namespace ToolTinhDiem
 			}
 			if (score1 == score2)
 			{
-				var leftPlayer = listNguoiChoi.FirstOrDefault(x => x.Ten == cbPlayer1.SelectedItem.ToString());
-				if (leftPlayer == null)
-				{
-					MessageBox.Show("Không tìm thấy người chơi", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-					return;
-				}
-				var rightPlayer = listNguoiChoi.FirstOrDefault(x => x.Ten == cbPlayer2.SelectedItem.ToString());
-				if (rightPlayer == null)
-				{
-					MessageBox.Show("Không tìm thấy người chơi", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-					return;
-				}
 				leftPlayer.TranHoa += 1;
 				leftPlayer.BanThang += score1;
 				leftPlayer.BangBai += score2;
@@ -123,18 +122,6 @@ namespace ToolTinhDiem
 			}
 			if (score1 < score2)
 			{
-				var leftPlayer = listNguoiChoi.FirstOrDefault(x => x.Ten == cbPlayer1.SelectedItem.ToString());
-				if (leftPlayer == null)
-				{
-					MessageBox.Show("Không tìm thấy người chơi", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-					return;
-				}
-				var rightPlayer = listNguoiChoi.FirstOrDefault(x => x.Ten == cbPlayer2.SelectedItem.ToString());
-				if (rightPlayer == null)
-				{
-					MessageBox.Show("Không tìm thấy người chơi", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-					return;
-				}
 				leftPlayer.TranThua += 1;
 				leftPlayer.BanThang += score1;
 				leftPlayer.BangBai += score2;
@@ -148,6 +135,15 @@ namespace ToolTinhDiem
 				.OrderByDescending(x => x.Diem)
 				.ThenByDescending(x => x.HieuSo)
 				.ToList();
+
+			var match = new TranDau()
+			{
+				TenNguoiChoi1 = leftPlayer.Ten,
+				TenNguoiChoi2 = rightPlayer.Ten,
+				BanThangNguoiChoi1 = score1,
+				BanThangNguoiChoi2 = score2
+			};
+			listTranDau.Add(match);
 
 			dataGridView1.DataSource = sortList;
 			//dataGridView1.Refresh();
@@ -197,7 +193,7 @@ namespace ToolTinhDiem
 
 		private string GetSaveFolderBackUpPath()
 		{
-			return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "History");
+			return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "BackUp");
 		}
 
 		private void btnDeleteAllFile_Click(object sender, EventArgs e)
@@ -216,6 +212,21 @@ namespace ToolTinhDiem
 				MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		
+		}
+
+		private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+		{
+			var cellName = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+			var maths = listTranDau
+				.Where(x => x.TenNguoiChoi1 == cellName || x.TenNguoiChoi2 == cellName)
+				.Select(x => $"{x.TenNguoiChoi1} {x.BanThangNguoiChoi1} - {x.BanThangNguoiChoi2} {x.TenNguoiChoi2}");
+			var returnMessage = string.Join("\n", maths);
+			if (string.IsNullOrWhiteSpace(returnMessage))
+			{
+				MessageBox.Show("Người chơi chưa thi đấu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				return;
+			}
+			MessageBox.Show(returnMessage);
 		}
 	}
 }
