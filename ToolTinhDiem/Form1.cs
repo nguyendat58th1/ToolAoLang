@@ -216,21 +216,25 @@ namespace ToolTinhDiem
 
 		private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
 		{
-			if (e.RowIndex < 0)
+			if (e.ColumnIndex == dataGridView1.Columns["btnHistory"].Index)
 			{
-				return;
+				if (e.RowIndex < 0)
+				{
+					return;
+				}
+
+				var cellName = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+				var maths = listTranDau
+					.Where(x => x.TenNguoiChoi1 == cellName || x.TenNguoiChoi2 == cellName)
+					.Select(x => $"{x.TenNguoiChoi1} {x.BanThangNguoiChoi1} - {x.BanThangNguoiChoi2} {x.TenNguoiChoi2}");
+				if (!maths.Any())
+				{
+					MessageBox.Show("Người chơi chưa thi đấu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					return;
+				}
+				var returnMessage = string.Join("\n", maths);
+				MessageBox.Show(returnMessage);
 			}
-			var cellName = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
-			var maths = listTranDau
-				.Where(x => x.TenNguoiChoi1 == cellName || x.TenNguoiChoi2 == cellName)
-				.Select(x => $"{x.TenNguoiChoi1} {x.BanThangNguoiChoi1} - {x.BanThangNguoiChoi2} {x.TenNguoiChoi2}");
-			if (!maths.Any())
-			{
-				MessageBox.Show("Người chơi chưa thi đấu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-				return;
-			}
-			var returnMessage = string.Join("\n", maths);
-			MessageBox.Show(returnMessage);
 		}
 	}
 }
