@@ -216,16 +216,20 @@ namespace ToolTinhDiem
 
 		private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
 		{
+			if (e.RowIndex < 0)
+			{
+				return;
+			}
 			var cellName = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
 			var maths = listTranDau
 				.Where(x => x.TenNguoiChoi1 == cellName || x.TenNguoiChoi2 == cellName)
 				.Select(x => $"{x.TenNguoiChoi1} {x.BanThangNguoiChoi1} - {x.BanThangNguoiChoi2} {x.TenNguoiChoi2}");
-			var returnMessage = string.Join("\n", maths);
-			if (string.IsNullOrWhiteSpace(returnMessage))
+			if (!maths.Any())
 			{
 				MessageBox.Show("Người chơi chưa thi đấu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				return;
 			}
+			var returnMessage = string.Join("\n", maths);
 			MessageBox.Show(returnMessage);
 		}
 	}
