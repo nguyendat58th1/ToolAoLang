@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0757b6a566984696a6d8bb0d4917af0f" Name="Diagram1">
+        <EntityTypeShape EntityType="ToolAoLangModel.Match" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToolAoLangModel.Player" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToolAoLangModel.Season" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToolAoLangModel.Stat" Width="1.5" PointX="6" PointY="2.875" IsExpanded="true" />
+        <AssociationConnector Association="ToolAoLangModel.FK__Match__PlayerId1__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="ToolAoLangModel.FK__Match__PlayerId2__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="ToolAoLangModel.FK__Stat__PlayerId__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="ToolAoLangModel.FK__Stat__SeasonId__4E88ABD4" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,317 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ToolAoLangModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Match">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PlayerId1" Type="int" Nullable="false" />
+          <Property Name="PlayerId2" Type="int" Nullable="false" />
+          <Property Name="SeasonId" Type="int" Nullable="false" />
+          <Property Name="BanThangNguoiChoi1" Type="int" Nullable="false" />
+          <Property Name="BanThangNguoiChoi2" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Player">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ten" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Season">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ten" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Stat">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PlayerId" Type="int" Nullable="false" />
+          <Property Name="SeasonId" Type="int" Nullable="false" />
+          <Property Name="TongSoTran" Type="int" Nullable="false" />
+          <Property Name="TranThang" Type="int" Nullable="false" />
+          <Property Name="TranHoa" Type="int" Nullable="false" />
+          <Property Name="TranThua" Type="int" Nullable="false" />
+          <Property Name="BanThang" Type="int" Nullable="false" />
+          <Property Name="BanBai" Type="int" Nullable="false" />
+          <Property Name="HieuSo" Type="int" Nullable="false" />
+          <Property Name="Diem" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Match__PlayerId1__5165187F">
+          <End Role="Player" Type="Self.Player" Multiplicity="1" />
+          <End Role="Match" Type="Self.Match" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Match">
+              <PropertyRef Name="PlayerId1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Match__PlayerId2__52593CB8">
+          <End Role="Player" Type="Self.Player" Multiplicity="1" />
+          <End Role="Match" Type="Self.Match" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Match">
+              <PropertyRef Name="PlayerId2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Stat__PlayerId__4D94879B">
+          <End Role="Player" Type="Self.Player" Multiplicity="1" />
+          <End Role="Stat" Type="Self.Stat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Stat">
+              <PropertyRef Name="PlayerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Stat__SeasonId__4E88ABD4">
+          <End Role="Season" Type="Self.Season" Multiplicity="1" />
+          <End Role="Stat" Type="Self.Stat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Season">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Stat">
+              <PropertyRef Name="SeasonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ToolAoLangModelStoreContainer">
+          <EntitySet Name="Match" EntityType="Self.Match" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Player" EntityType="Self.Player" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Season" EntityType="Self.Season" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stat" EntityType="Self.Stat" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Match__PlayerId1__5165187F" Association="Self.FK__Match__PlayerId1__5165187F">
+            <End Role="Player" EntitySet="Player" />
+            <End Role="Match" EntitySet="Match" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Match__PlayerId2__52593CB8" Association="Self.FK__Match__PlayerId2__52593CB8">
+            <End Role="Player" EntitySet="Player" />
+            <End Role="Match" EntitySet="Match" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Stat__PlayerId__4D94879B" Association="Self.FK__Stat__PlayerId__4D94879B">
+            <End Role="Player" EntitySet="Player" />
+            <End Role="Stat" EntitySet="Stat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Stat__SeasonId__4E88ABD4" Association="Self.FK__Stat__SeasonId__4E88ABD4">
+            <End Role="Season" EntitySet="Season" />
+            <End Role="Stat" EntitySet="Stat" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ToolAoLangModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Match">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PlayerId1" Type="Int32" Nullable="false" />
+          <Property Name="PlayerId2" Type="Int32" Nullable="false" />
+          <Property Name="SeasonId" Type="Int32" Nullable="false" />
+          <Property Name="BanThangNguoiChoi1" Type="Int32" Nullable="false" />
+          <Property Name="BanThangNguoiChoi2" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Player" Relationship="Self.FK__Match__PlayerId1__5165187F" FromRole="Match" ToRole="Player" />
+          <NavigationProperty Name="Player1" Relationship="Self.FK__Match__PlayerId2__52593CB8" FromRole="Match" ToRole="Player" />
+        </EntityType>
+        <EntityType Name="Player">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Match" Relationship="Self.FK__Match__PlayerId1__5165187F" FromRole="Player" ToRole="Match" />
+          <NavigationProperty Name="Match1" Relationship="Self.FK__Match__PlayerId2__52593CB8" FromRole="Player" ToRole="Match" />
+          <NavigationProperty Name="Stat" Relationship="Self.FK__Stat__PlayerId__4D94879B" FromRole="Player" ToRole="Stat" />
+        </EntityType>
+        <EntityType Name="Season">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Stat" Relationship="Self.FK__Stat__SeasonId__4E88ABD4" FromRole="Season" ToRole="Stat" />
+        </EntityType>
+        <EntityType Name="Stat">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PlayerId" Type="Int32" Nullable="false" />
+          <Property Name="SeasonId" Type="Int32" Nullable="false" />
+          <Property Name="TongSoTran" Type="Int32" Nullable="false" />
+          <Property Name="TranThang" Type="Int32" Nullable="false" />
+          <Property Name="TranHoa" Type="Int32" Nullable="false" />
+          <Property Name="TranThua" Type="Int32" Nullable="false" />
+          <Property Name="BanThang" Type="Int32" Nullable="false" />
+          <Property Name="BanBai" Type="Int32" Nullable="false" />
+          <Property Name="HieuSo" Type="Int32" Nullable="false" />
+          <Property Name="Diem" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Player" Relationship="Self.FK__Stat__PlayerId__4D94879B" FromRole="Stat" ToRole="Player" />
+          <NavigationProperty Name="Season" Relationship="Self.FK__Stat__SeasonId__4E88ABD4" FromRole="Stat" ToRole="Season" />
+        </EntityType>
+        <Association Name="FK__Match__PlayerId1__5165187F">
+          <End Role="Player" Type="Self.Player" Multiplicity="1" />
+          <End Role="Match" Type="Self.Match" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Match">
+              <PropertyRef Name="PlayerId1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Match__PlayerId2__52593CB8">
+          <End Role="Player" Type="Self.Player" Multiplicity="1" />
+          <End Role="Match" Type="Self.Match" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Match">
+              <PropertyRef Name="PlayerId2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Stat__PlayerId__4D94879B">
+          <End Role="Player" Type="Self.Player" Multiplicity="1" />
+          <End Role="Stat" Type="Self.Stat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Stat">
+              <PropertyRef Name="PlayerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Stat__SeasonId__4E88ABD4">
+          <End Role="Season" Type="Self.Season" Multiplicity="1" />
+          <End Role="Stat" Type="Self.Stat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Season">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Stat">
+              <PropertyRef Name="SeasonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ToolAoLangEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Match" EntityType="Self.Match" />
+          <EntitySet Name="Player" EntityType="Self.Player" />
+          <EntitySet Name="Season" EntityType="Self.Season" />
+          <EntitySet Name="Stat" EntityType="Self.Stat" />
+          <AssociationSet Name="FK__Match__PlayerId1__5165187F" Association="Self.FK__Match__PlayerId1__5165187F">
+            <End Role="Player" EntitySet="Player" />
+            <End Role="Match" EntitySet="Match" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Match__PlayerId2__52593CB8" Association="Self.FK__Match__PlayerId2__52593CB8">
+            <End Role="Player" EntitySet="Player" />
+            <End Role="Match" EntitySet="Match" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Stat__PlayerId__4D94879B" Association="Self.FK__Stat__PlayerId__4D94879B">
+            <End Role="Player" EntitySet="Player" />
+            <End Role="Stat" EntitySet="Stat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Stat__SeasonId__4E88ABD4" Association="Self.FK__Stat__SeasonId__4E88ABD4">
+            <End Role="Season" EntitySet="Season" />
+            <End Role="Stat" EntitySet="Stat" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ToolAoLangModelStoreContainer" CdmEntityContainer="ToolAoLangEntities">
+          <EntitySetMapping Name="Match">
+            <EntityTypeMapping TypeName="ToolAoLangModel.Match">
+              <MappingFragment StoreEntitySet="Match">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PlayerId1" ColumnName="PlayerId1" />
+                <ScalarProperty Name="PlayerId2" ColumnName="PlayerId2" />
+                <ScalarProperty Name="SeasonId" ColumnName="SeasonId" />
+                <ScalarProperty Name="BanThangNguoiChoi1" ColumnName="BanThangNguoiChoi1" />
+                <ScalarProperty Name="BanThangNguoiChoi2" ColumnName="BanThangNguoiChoi2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Player">
+            <EntityTypeMapping TypeName="ToolAoLangModel.Player">
+              <MappingFragment StoreEntitySet="Player">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Ten" ColumnName="Ten" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Season">
+            <EntityTypeMapping TypeName="ToolAoLangModel.Season">
+              <MappingFragment StoreEntitySet="Season">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Ten" ColumnName="Ten" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stat">
+            <EntityTypeMapping TypeName="ToolAoLangModel.Stat">
+              <MappingFragment StoreEntitySet="Stat">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PlayerId" ColumnName="PlayerId" />
+                <ScalarProperty Name="SeasonId" ColumnName="SeasonId" />
+                <ScalarProperty Name="TongSoTran" ColumnName="TongSoTran" />
+                <ScalarProperty Name="TranThang" ColumnName="TranThang" />
+                <ScalarProperty Name="TranHoa" ColumnName="TranHoa" />
+                <ScalarProperty Name="TranThua" ColumnName="TranThua" />
+                <ScalarProperty Name="BanThang" ColumnName="BanThang" />
+                <ScalarProperty Name="BanBai" ColumnName="BanBai" />
+                <ScalarProperty Name="HieuSo" ColumnName="HieuSo" />
+                <ScalarProperty Name="Diem" ColumnName="Diem" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
