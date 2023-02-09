@@ -17,46 +17,24 @@ namespace ToolTinhDiem.Entity
         public int Id { get; set; }
         public int PlayerId { get; set; }
 		public int SeasonId { get; set; } 
-        public int TongSoTran
-		{
-			get
-			{
-				return TranThang + TranHoa + TranThua;
-			}
-			set
-			{
-				value = TranThang + TranHoa + TranThua;
-			}
-		}
+        public int TongSoTran { get; set; }
 		public int TranThang { get; set; } = 0;
 		public int TranHoa { get; set; } = 0;
 		public int TranThua { get; set; } = 0;
 		public int BanThang { get; set; } = 0;
 		public int BanBai { get; set; } = 0;
-		public int HieuSo
-		{
-			get
-			{
-				return BanThang - BanBai;
-			}
-			set
-			{
-				value = BanThang - BanBai;
-			}
-		}
-        public int Diem
-		{
-			get
-			{
-				return TranThang * 3 + TranHoa;
-			}
-			set
-			{
-				value = TranThang * 3 + TranHoa;
-			}
-		}
+		public int HieuSo { get; set; }
+
+		public int Diem { get; set; }
 
 		public virtual Player Player { get; set; }
         public virtual Season Season { get; set; }
+
+		public void CalculateStat()
+		{
+			TongSoTran = TranThang + TranHoa + TranThua;
+			HieuSo = BanThang - BanBai;
+			Diem = TranThang * 3 + TranHoa;
+		}
     }
 }
